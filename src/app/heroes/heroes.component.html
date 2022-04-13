@@ -4,14 +4,16 @@
 <router-outlet></router-outlet>
 
 <ul class="heroes">
-  <li
+<!--  <li
     *ngFor="let hero of heroes; let i = index; let odd = odd; let even = even">
-    <app-hero-button [class.selected]="selectedHero === hero" (buttonClicked)="onSelect(hero)">
-      <span class="badge">{{hero.id}}</span> {{hero | heroName: 13: "smth"}}
-      <span *ngIf="odd"> - odd</span>
-      <span *ngIf="even"> - even</span>
-    </app-hero-button>
-  </li>
+
+  </li>-->
+
+  <app-hero-button [title]="title" *ngIf="heroes[0] as hero" [class.selected]="selectedHero === hero" (buttonClicked)="onSelect(hero)">
+    <span class="badge">{{hero.id}}</span> {{hero | heroName: 13: "smth"}}
+<!--    <span *ngIf="odd"> - odd</span>-->
+<!--    <span *ngIf="even"> - even</span>-->
+  </app-hero-button>
 </ul>
 
 <!--

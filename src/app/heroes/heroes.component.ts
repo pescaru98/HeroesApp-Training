@@ -27,19 +27,22 @@ export class HeroesComponent implements OnInit {
   };
   /*  @Input() title!: string;
     @Output() titleChange = new EventEmitter<string>();*/
-
+  title = 'Hero title';
   selectedHero?: Hero;
   heroes: Hero[] = [];
   //heroes$: Observable<Hero[]>;
 
   constructor(private heroesApiService: HeroesApiService, private changeDetector: ChangeDetectorRef, private router: Router, private route:ActivatedRoute) {
-    console.log("ctor");
+    // console.log("ctor");
     /** Gets heroes from resolver */
     this.heroes = this.route.snapshot.data['heroes'];
 /*    this.heroes$ = this.heroesApiService.getHeroes().pipe(catchError(err => {
       console.log("error");
       return [];
     }));*/
+    setInterval(() => {
+      this.title = 'Hero title' + Math.random();
+    }, 1000)
   }
 
   ngOnInit(): void {
@@ -48,11 +51,11 @@ export class HeroesComponent implements OnInit {
           error: err => console.log(err),
           complete: () => console.log("Finished")
         });*/
-    console.log("after on init");
+    // console.log("after on init");
   }
 
   logChange($event: string) {
-    console.log($event);
+    // console.log($event);
     // this.titleChange.emit($event);
   }
 
