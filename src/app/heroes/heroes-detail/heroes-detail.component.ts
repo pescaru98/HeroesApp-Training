@@ -19,17 +19,10 @@ export class HeroesDetailComponent implements OnInit {
       params => {
         return Number(params.get('id'));
       }));
-    const heroes$ = this.heroesApiService.getHeroes();
-    this.hero$ = combineLatest([heroId$, heroes$]).pipe(
-      map(([heroId, heroes]) => heroes.find(hero => hero.id === heroId)),
-      map(foundHero => {
-        if (foundHero) return foundHero;
-        this.router.navigate(['heroes']);
-        return {} as Hero;
-      }));
+    const heroes$ = this.heroesApiService.heroes;
+    this.hero$ = heroId$.pipe(
+      map((heroId) => this.heroesApiService.heroes.find(hero => hero.id === heroId) as Hero));
     //this.router.navigate(['/heroes']);
-
-
   }
 
   ngOnInit(): void {
