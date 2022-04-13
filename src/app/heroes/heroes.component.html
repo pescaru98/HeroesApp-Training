@@ -6,11 +6,11 @@
 <ul class="heroes">
   <li
     *ngFor="let hero of heroes; let i = index; let odd = odd; let even = even">
-    <button [class.selected]="selectedHero === hero" (click)="onSelect(hero)">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    <app-hero-button [class.selected]="selectedHero === hero" (buttonClicked)="onSelect(hero)">
+      <span class="badge">{{hero.id}}</span> {{hero | heroName: 13: "smth"}}
       <span *ngIf="odd"> - odd</span>
       <span *ngIf="even"> - even</span>
-    </button>
+    </app-hero-button>
   </li>
 </ul>
 

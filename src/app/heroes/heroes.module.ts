@@ -4,10 +4,11 @@ import {RouterModule} from "@angular/router";
 import {HeroesComponent} from "./heroes.component";
 import {HeroesResolver} from "./heroes.resolver";
 import { HeroButtonComponent } from './hero-button/hero-button.component';
+import { HeroNamePipe } from './hero-name.pipe';
 
 
 @NgModule({
-  declarations: [HeroesComponent, HeroButtonComponent],
+  declarations: [HeroesComponent, HeroButtonComponent, HeroNamePipe],
   imports: [
     CommonModule,
     RouterModule.forChild([
