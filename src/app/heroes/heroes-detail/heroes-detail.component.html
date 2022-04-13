@@ -1,0 +1,9 @@
+<div *ngIf="hero$ | async as hero">
+  <h1>{{hero.name | uppercase}} details</h1>
+
+  <div>
+    <span>name:</span> {{hero.name}}
+    <span>id:</span> {{hero.id}}
+  </div>
+
+</div>
