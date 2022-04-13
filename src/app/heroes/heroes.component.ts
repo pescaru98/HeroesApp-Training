@@ -10,13 +10,15 @@ import {
 import {Hero} from "./models/hero.model";
 import {HeroesApiService} from "./heroes-api.service";
 import {catchError, Observable} from "rxjs";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.scss'],
+  styleUrls: ['./heroes.component.scss']
+/*
   changeDetection: ChangeDetectionStrategy.OnPush
+*/
 })
 export class HeroesComponent implements OnInit {
   hero = {
@@ -28,14 +30,16 @@ export class HeroesComponent implements OnInit {
 
   selectedHero?: Hero;
   heroes: Hero[] = [];
-  heroes$: Observable<Hero[]>;
+  //heroes$: Observable<Hero[]>;
 
-  constructor(private heroesApiService: HeroesApiService, private changeDetector: ChangeDetectorRef, private router: Router) {
+  constructor(private heroesApiService: HeroesApiService, private changeDetector: ChangeDetectorRef, private router: Router, private route:ActivatedRoute) {
     console.log("ctor");
-    this.heroes$ = this.heroesApiService.getHeroes().pipe(catchError(err => {
+    /** Gets heroes from resolver */
+    this.heroes = this.route.snapshot.data['heroes'];
+/*    this.heroes$ = this.heroesApiService.getHeroes().pipe(catchError(err => {
       console.log("error");
       return [];
-    }));
+    }));*/
   }
 
   ngOnInit(): void {

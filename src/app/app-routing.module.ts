@@ -5,16 +5,12 @@ import {HeroesDetailComponent} from "./heroes/heroes-detail/heroes-detail.compon
 
 const routes: Routes = [{
   path: 'heroes',
-  component: HeroesComponent,
-  /*  children: [{
-      path: ':id',
-      component: HeroesDetailComponent
-    }]*/
+  loadChildren: () => import('./heroes/heroes.module').then(m => m.HeroesModule),
 },
-  {
+  /*{
     path: 'heroes/:id',
-    component: HeroesDetailComponent
-  }];
+    loadChildren: () => import('./heroes/heroes-detail/hero-detail.module').then(m => m.HeroDetailModule)
+  }*/];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

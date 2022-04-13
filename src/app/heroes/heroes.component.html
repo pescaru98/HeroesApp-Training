@@ -3,7 +3,7 @@
 
 <router-outlet></router-outlet>
 
-<ul class="heroes" *ngIf="heroes$ | async as heroes">
+<ul class="heroes">
   <li
     *ngFor="let hero of heroes; let i = index; let odd = odd; let even = even">
     <button [class.selected]="selectedHero === hero" (click)="onSelect(hero)">

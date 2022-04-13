@@ -10,9 +10,7 @@ import { HeroesDetailComponent } from './heroes/heroes-detail/heroes-detail.comp
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeroesComponent,
-    HeroesDetailComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
